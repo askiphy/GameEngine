@@ -1,7 +1,6 @@
 package ru.bananus.gameengine.GamesAPI.JS;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Util;
 import net.minecraft.util.text.StringTextComponent;
 import ru.bananus.gameengine.Annotations.Documentate;
 
@@ -17,6 +16,9 @@ public class PlayerJS extends JSResource {
 
     @Documentate(desc = "Sends message to the player.")
     public PlayerJS sendMessage(String text) {
+        if (text.contains("&")) {
+            text.replaceAll("&", "§");
+        }
         player.sendMessage( new StringTextComponent(text), player.getUUID());
         return this;
     }
@@ -53,6 +55,9 @@ public class PlayerJS extends JSResource {
 
     @Documentate(desc = "Sets Player Z Position.")
     public void setZ(double z) { setPosition(getX(),getY(),z); };
+
+    @Documentate(desc = "Get player")
+    public PlayerEntity getPlayer() { return player; };
 
     @Override public Object getNative() { return player; }
     @Override public String getResourceId() { return "player"; }

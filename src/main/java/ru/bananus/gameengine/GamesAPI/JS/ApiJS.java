@@ -13,7 +13,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.registries.ForgeRegistries;
 import ru.bananus.gameengine.Annotations.Documentate;
+import ru.bananus.gameengine.GamesAPI.ActionEvent;
+import ru.bananus.gameengine.GamesAPI.Instances.SceneInstance;
 import ru.bananus.gameengine.GamesAPI.JS.Event.EventJS;
+import ru.bananus.gameengine.GamesAPI.data.Action;
+import ru.bananus.gameengine.GamesAPI.data.ActionPacketData;
+
+import java.util.function.Consumer;
 
 public class ApiJS extends JSResource {
     @Documentate(desc = "Default MC blocks.")
@@ -122,6 +128,39 @@ public class ApiJS extends JSResource {
         public static final int ERROR = 1;
 
         public static final String[] MSGS = new String[] { "INFO","ERROR" };
+    }
+
+    @Documentate(desc = "Creates new DialogueBuilder class.")
+    public DialogueBuilder newDialogueData() {
+        return new DialogueBuilder();
+    }
+
+    public static class DialogueBuilder {
+        public String id = "1";
+        public String question;
+        public String answer1;
+        public String answer2;
+        public String scene_id1;
+        public String scene_id2;
+
+        @Documentate(desc = "Sets dialoge id.")
+        public DialogueBuilder withId(String id) { this.id = id; return this; }
+
+        @Documentate(desc = "Sets dialoge question.")
+        public DialogueBuilder withQuestion(String question) { this.question = question; return this; }
+
+        @Documentate(desc = "Sets dialoge answer1")
+        public DialogueBuilder withAnswer1(String answer1) { this.answer1 = answer1; return this; }
+
+        @Documentate(desc = "Sets dialoge answer2")
+        public DialogueBuilder withAnswer2(String answer2) { this.answer2 = answer2; return this; }
+
+        @Documentate(desc = "Sets dialoge scene_id1")
+        public DialogueBuilder withSceneId1 (String scene_id1) { this.scene_id1 = scene_id1; return this; }
+
+        @Documentate(desc = "Sets dialoge scene_id2")
+        public DialogueBuilder withSceneId2 (String scene_id2) { this.scene_id2 = scene_id2; return this; }
+
     }
 
     public static class CameraMode {

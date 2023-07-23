@@ -3,6 +3,8 @@ package ru.bananus.gameengine.Dialogue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import ru.bananus.gameengine.GamesAPI.Instances.SceneInstance;
+import ru.bananus.gameengine.GamesAPI.data.Action;
 import ru.bananus.gameengine.Network.Network;
 import ru.bananus.gameengine.Network.Packets.SDialogPacket;
 import ru.bananus.gameengine.Utils.SerializableRunnable;
@@ -15,18 +17,17 @@ public class Dialog implements Serializable {
     byte[] instance;
     public byte[] runnable;
 
+
     public Dialog(int id, Serializable runnable) {
         this.herosay = "end." + id;
         SerializableRunnable runnable1 = new SerializableRunnable(runnable);
-        this.runnable = Network.toByte(runnable1);
-        this.instance = Network.toByte(this);
     }
 
     public Dialog(String heroSay, Bench[] benches){
         this.herosay = heroSay;
         this.benches = benches;
-
     }
+
 
     public void show(PlayerEntity entity) {
         if (entity.level.isClientSide) {

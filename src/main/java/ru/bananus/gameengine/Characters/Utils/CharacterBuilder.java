@@ -3,6 +3,9 @@ package ru.bananus.gameengine.Characters.Utils;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.goal.GoalSelector;
 import net.minecraft.entity.ai.goal.PrioritizedGoal;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -33,6 +36,11 @@ public class CharacterBuilder {
     public void setAnim(String show){
         CharacterEntity npc = (CharacterEntity) entity;
         npc.setAnimation(show);
+    }
+
+    public void renderItem(ItemStack itemStack){
+        CharacterEntity npc = (CharacterEntity) entity;
+        npc.setItemSlot(EquipmentSlotType.MAINHAND, itemStack);
     }
 
     public void moveEntity(BlockPos vector3d, float speed){

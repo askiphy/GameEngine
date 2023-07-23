@@ -41,7 +41,6 @@ public class DialogScreen extends Screen {
                 String[] strings = bench.dialog.herosay.split("\\.");
                 if (Objects.equals(strings[0], "end")){
                     this.minecraft.setScreen(null);
-                    Network.sendToServer(new SEndDialogPacket(strings[0], bench.dialog.instance));
                 }
                 else {
                     this.minecraft.setScreen(new DialogScreen(bench.dialog.herosay, bench.dialog.benches));

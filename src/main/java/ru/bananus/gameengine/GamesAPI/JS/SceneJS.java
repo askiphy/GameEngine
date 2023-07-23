@@ -2,9 +2,11 @@ package ru.bananus.gameengine.GamesAPI.JS;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.management.PlayerInteractionManager;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -12,11 +14,15 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import ru.bananus.gameengine.Annotations.Documentate;
 import ru.bananus.gameengine.Characters.Character.CharacterEntity;
 import ru.bananus.gameengine.Characters.CharacterInit;
-import ru.bananus.gameengine.GamesAPI.ActionEvent;
+import ru.bananus.gameengine.Dialogue.Bench;
+import ru.bananus.gameengine.Dialogue.Dialog;
+import ru.bananus.gameengine.GamesAPI.*;
 import ru.bananus.gameengine.GamesAPI.Instances.SceneInstance;
 import ru.bananus.gameengine.GamesAPI.data.Action;
 import ru.bananus.gameengine.GamesAPI.data.ActionPacketData;
 
+import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
@@ -49,6 +55,28 @@ public class SceneJS {
     public void exitCutscene() {
         sceneInstance.inCutscene = false;
         sceneInstance.getPlayer().setGameMode(GameType.SURVIVAL);
+    }
+
+    @Documentate(desc = "Create and show dialog")
+    public void showDialog(ApiJS.DialogueBuilder dialog) {
+        Dialog dialogue = new Dialog(dialog.question, new Bench[] {
+                new Bench(dialog.answer1,
+                            new Dialog(1, (Serializable & Runnable) () -> {
+                                File file = new File(sceneInstance.getScene().story.storyFolder + "/scene/" + dialog.scene_id1 + ".json");
+                                String f = file.getName();
+                                sceneInstance.getPlayer().sendMessage(new StringTextComponent(f), sceneInstance.getPlayer().getUUID());
+                            })
+                        ),
+                new Bench(dialog.answer2,
+                        new Dialog(2, (Serializable & Runnable) () -> {
+                            File file = new File(sceneInstance.getScene().story.storyFolder + "/scene/" + dialog.scene_id2 + ".json");
+                            sceneInstance.getScene().story.addScene(file);
+                            sceneInstance.endScene();
+                            sceneInstance.startScene();
+                        })
+                ),
+        });
+        dialogue.show((PlayerEntity) sceneInstance.getPlayer());
     }
 
     @Documentate(desc = "Creates an npc.")

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -12,6 +13,7 @@ import net.minecraft.world.storage.FolderName;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import ru.bananus.gameengine.Dialogue.Bench;
 import ru.bananus.gameengine.Dialogue.DialogScreen;
+import ru.bananus.gameengine.FSC;
 import ru.bananus.gameengine.GameEngine;
 import ru.bananus.gameengine.GamesAPI.Root;
 import ru.bananus.gameengine.GamesAPI.Utils.Filters;
@@ -50,6 +52,11 @@ public class SelectionScreen extends Screen {
             buttons.add(button);
             y+=35;
         }
+        Button button = this.addButton(new Button(this.width / 2 - 100, this.height - 30, 200, 20, new StringTextComponent("Refresh stories"), (buttonWidget) -> {
+            Root.reloadStories();
+            Minecraft.getInstance().setScreen(null);
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent(TextFormatting.GREEN + FSC.udcStar + "Reloaded successfully!"), Minecraft.getInstance().player.getUUID());
+        }));
         super.init();
     }
 
