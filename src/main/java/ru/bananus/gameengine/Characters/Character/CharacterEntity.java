@@ -277,4 +277,8 @@ public class CharacterEntity extends AnimalEntity implements IAnimatable, IAnima
         this.goalSelector.addGoal(1, new MovePlayerEntity(this, x, y, z, speed));
     }
 
+    @Override
+    public boolean isAttackable() {
+        return false;
+    }
 }
