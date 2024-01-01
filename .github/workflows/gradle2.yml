@@ -35,7 +35,8 @@ jobs:
     - run: ls
     - run: gradle build  # just test build configuration
     - run: echo "The release-candidate version was ${{ steps.setup-gradle.outputs.gradle-version }}"
-    - uses: actions/upload-artifact@v3
-    with:
-      name: Package
-      path: build/libs
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: art
+        path: build/libs
