@@ -29,8 +29,6 @@ public class FSC {
                 "\n"+headfooter
                         +"\n"+logo
                         +"\n"+fsInfo
-                        +"\n"+envInfo
-                        +"\n"+docInfo
                         +"\n"+headfooter
         );
     }
