@@ -1,4 +1,4 @@
-package ru.bananus.gameengine;
+package ru.gameengine;
 
 import io.netty.util.internal.logging.InternalLogger;
 import net.minecraft.block.Block;
@@ -17,14 +17,14 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.bananus.gameengine.Characters.AttributeRegistry;
-import ru.bananus.gameengine.Characters.CharacterInit;
-import ru.bananus.gameengine.Characters.RenderRegistry;
-import ru.bananus.gameengine.Events.ClientBusEvents;
-import ru.bananus.gameengine.Events.EventHandler;
-import ru.bananus.gameengine.Items.ItemRegistry;
-import ru.bananus.gameengine.Network.Network;
-import ru.bananus.gameengine.Scripts.Script;
+import ru.gameengine.Characters.AttributeRegistry;
+import ru.gameengine.Characters.CharacterInit;
+import ru.gameengine.Characters.RenderRegistry;
+import ru.gameengine.Events.ClientBusEvents;
+import ru.gameengine.Events.EventHandler;
+import ru.gameengine.Items.ItemRegistry;
+import ru.gameengine.Network.Network;
+import ru.gameengine.Scripts.Script;
 
 import java.util.stream.Collectors;
 
