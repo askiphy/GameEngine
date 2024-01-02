@@ -1,4 +1,5 @@
-name: Build Artifact
+
+name: Build Test-Artifact
 
 on:
   push:
