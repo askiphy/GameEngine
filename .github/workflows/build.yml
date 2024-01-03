@@ -3,9 +3,9 @@ name: Build Test-Artifact
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "v*" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master"]
 
 permissions:
   contents: read
