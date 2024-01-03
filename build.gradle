@@ -15,7 +15,7 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-group = 'ru.bananus'
+group = 'ru'
 version = '1.0'
 
 java {
