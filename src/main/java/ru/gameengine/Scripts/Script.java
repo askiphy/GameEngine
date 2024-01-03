@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.Mod;
 import ru.gameengine.Characters.Utils.CharacterBuilder;
 import ru.gameengine.Dialogue.Bench;
 import ru.gameengine.Dialogue.Dialog;
-import ru.gameengine.MainAPI.DownloadScreen;
 import ru.gameengine.Utils.Cutscene;
 
 import java.io.Serializable;
