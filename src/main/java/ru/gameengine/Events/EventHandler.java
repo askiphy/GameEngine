@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import net.minecraftforge.fml.network.PacketDistributor;
 import ru.gameengine.Commands.MainCommand;
-import ru.gameengine.FSC;
+import ru.gameengine.Utils.LogUtils;
 import ru.gameengine.GameEngine;
 import ru.gameengine.GamesAPI.Root;
 import ru.gameengine.GamesAPI.data.ActionPacketData;
@@ -53,7 +53,7 @@ public class EventHandler {
 
     @SubscribeEvent()
     public static void serverStarted(FMLServerStartedEvent event) {
-        FSC.sendInformationMessage();
+        LogUtilitis.sendInformationMessage();
         Root.reloadStories();
     }
 

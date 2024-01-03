@@ -2,7 +2,7 @@ package ru.gameengine.GamesAPI;
 
 import net.minecraft.world.storage.FolderName;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
-import ru.gameengine.FSC;
+import ru.gameengine.Utils.LogUtils;
 import ru.gameengine.GamesAPI.Utils.FileManager;
 import ru.gameengine.GamesAPI.Utils.Filters;
 import ru.gameengine.GamesAPI.data.FSData;
@@ -36,7 +36,7 @@ import java.util.Objects;
             File buildFolder = new File(worldFolder, "ge_builds");
             buildFolder.mkdir();
 
-            FSC.sout(FSC.udcRombus + "Reloading stories...");
+            LogUtils.sendLog(LogUtils.udcRombus + "Reloading stories...");
 
             File[] storyFolders = storiesFolder.listFiles(Filters.onlyDir);
             for (File story : storyFolders)
@@ -171,7 +171,7 @@ import java.util.Objects;
             createDir(storyFile, "scene");
             storiesList.put(storyFile.getName(), story);
             buildStory(story);
-            FSC.sout(FSC.udcRFaceArrow + FSC.udcRFaceArrow + "Loaded story: " + story.storyId.toUpperCase());
+            LogUtils.sendLog(LogUtils.udcRFaceArrow + LogUtils.udcRFaceArrow + "Loaded story: " + story.storyId.toUpperCase());
             return true;
         }
 
@@ -185,7 +185,7 @@ import java.util.Objects;
             createDir(dataF, "script");
             createDir(storyFile, "scene");
             storiesList.put(storyFile.getName(), story);
-            FSC.sout(FSC.udcRFaceArrow + FSC.udcRFaceArrow + "Loaded story: " + story.storyId.toUpperCase());
+            LogUtils.sendLog(LogUtils.udcRFaceArrow + LogUtils.udcRFaceArrow + "Loaded story: " + story.storyId.toUpperCase());
             return true;
         }
 

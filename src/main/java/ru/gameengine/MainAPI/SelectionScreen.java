@@ -13,7 +13,7 @@ import net.minecraft.world.storage.FolderName;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import ru.gameengine.Dialogue.Bench;
 import ru.gameengine.Dialogue.DialogScreen;
-import ru.gameengine.FSC;
+import ru.gameengine.Utils.LogUtils;
 import ru.gameengine.GameEngine;
 import ru.gameengine.GamesAPI.Root;
 import ru.gameengine.GamesAPI.Utils.Filters;
@@ -55,7 +55,7 @@ public class SelectionScreen extends Screen {
         Button button = this.addButton(new Button(this.width / 2 - 100, this.height - 30, 200, 20, new StringTextComponent("Refresh stories"), (buttonWidget) -> {
             Root.reloadStories();
             Minecraft.getInstance().setScreen(null);
-            Minecraft.getInstance().player.sendMessage(new StringTextComponent(TextFormatting.GREEN + FSC.udcStar + "Reloaded successfully!"), Minecraft.getInstance().player.getUUID());
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent(TextFormatting.GREEN + LogUtils.udcStar + "Reloaded successfully!"), Minecraft.getInstance().player.getUUID());
         }));
         super.init();
     }

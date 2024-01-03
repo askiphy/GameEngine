@@ -4,7 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
-import ru.gameengine.FSC;
+import ru.gameengine.Utils.LogUtils;
 import ru.gameengine.GamesAPI.Instances.SceneInstance;
 import ru.gameengine.GamesAPI.JS.JSResource;
 import ru.gameengine.GamesAPI.Utils.FileManager;
@@ -57,7 +57,7 @@ public class Game {
                     Scene scene = scenes.get(data.sceneQueued);
                     if(scene != null) {
                         startScene(scene, p);
-                        FSC.sout(FSC.udcStar+"Starting scene "+scene.id.toUpperCase()+" for "+p.getName().getString());
+                        LogUtils.sendLog(LogUtils.udcStar+"Starting scene "+scene.id.toUpperCase()+" for "+p.getName().getString());
                     }
                 }
                 playersData.put(playerUuid,data);

@@ -21,8 +21,6 @@ public class PlotterJSON {
         return null;
     }
 
-    @MethodJSON(id = "talk")
-    @SuppressWarnings("all")
     public static void talk(SceneInstance scene, HashMap<String,Object> data) {
         String author = (String) FileManager.getSafely(data,"author","NPC");
         String text = (String) FileManager.getSafely(data,"text","Hello World!");
@@ -32,8 +30,7 @@ public class PlotterJSON {
         scene.getPlayer().sendMessage(playerMessage, Util.NIL_UUID);
     }
 
-    @MethodJSON(id = "placeholder")
-    @SuppressWarnings("all")
+ 
     public static void doNothing(SceneInstance scene, HashMap<String,Object> data) {
 
     }
