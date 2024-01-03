@@ -53,7 +53,7 @@ public class EventHandler {
 
     @SubscribeEvent()
     public static void serverStarted(FMLServerStartedEvent event) {
-        LogUtilitis.sendInformationMessage();
+        LogUtils.sendInformationMessage();
         Root.reloadStories();
     }
 
