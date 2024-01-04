@@ -30,5 +30,7 @@ public class Script {
    /*   npc.renderItem(new ItemStack(Items.DIAMOND));
         npc.moveEntity(new BlockPos(10, 10, 10), 1);*/
         player.sendMessage(new StringTextComponent("Текст для чата"), player.getUUID());
+        /* Здесь должна быть задержка 15 сек */
+        player.sendMessage(new StringTextComponent("Текст для чата"), player.getUUID());
     }
 }
