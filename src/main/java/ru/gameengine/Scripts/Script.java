@@ -25,7 +25,7 @@ public class Script {
         player = event.getPlayer();
         CharacterBuilder npc = new CharacterBuilder("textures/entity/eil.png", new BlockPos(player.getX()-2, player.getY(), player.getZ()), player.level);
         npc.renderItem(new ItemStack(Items.DIAMOND));
-        npc.moveEntity(new BlockPos(player.getX()-2, player.getY(), player.getZ()), 1.0) 
+        npc.moveEntity(new BlockPos(player.getX()-2, player.getY(), player.getZ()), 1.0);
         
     }
 }
