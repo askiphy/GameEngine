@@ -24,9 +24,11 @@ public class Script {
     @SubscribeEvent
     public void onBreak(BlockEvent.BreakEvent event) {
         player = event.getPlayer();
-        CharacterBuilder npc = new CharacterBuilder("textures/entity/eil.png", new BlockPos(player.getX()-2, player.getY(), player.getZ()), player.level);
-        npc.renderItem(new ItemStack(Items.DIAMOND));
-        npc.moveEntity(new BlockPos(10, 10, 10), 1);
-        player.sendMessage(new StringTextComponent("[Bananus] О ебать,я пришел!"), player.getUUID());
+        CharacterBuilder npc = new CharacterBuilder("textures/entity/npc.png", new BlockPos(player.getX()-2, player.getY(), player.getZ()), player.level);
+        npc.setAnimationPath("animations/character.animation.json");
+        npc.setAnim("story.npc.happy");
+   /*   npc.renderItem(new ItemStack(Items.DIAMOND));
+        npc.moveEntity(new BlockPos(10, 10, 10), 1);*/
+        player.sendMessage(new StringTextComponent("Текст для чата"), player.getUUID());
     }
 }
