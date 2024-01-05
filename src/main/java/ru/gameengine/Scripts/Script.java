@@ -24,16 +24,16 @@ public class Script {
     @SubscribeEvent
     public void onBreak(BlockEvent.BreakEvent event) {
         player = event.getPlayer();
-        CharacterBuilder npc = new CharacterBuilder("textures/entity/npc.png", new BlockPos(player.getX()-2, player.getY(), player.getZ()), player.level);
+  /*      CharacterBuilder npc = new CharacterBuilder("textures/entity/npc.png", new BlockPos(player.getX()-2, player.getY(), player.getZ()), player.level);
         npc.setAnimationPath("animations/character.animation.json");
-        npc.setAnim("story.npc.happy");
+        npc.setAnim("story.npc.happy");*/
    /*   npc.renderItem(new ItemStack(Items.DIAMOND));
         npc.moveEntity(new BlockPos(10, 10, 10), 1);*/
         player.sendMessage(new StringTextComponent("Текст для чата"), player.getUUID());
-        CharacterBuilder dex = new CharacterBuilder("textures/entity/npc.png", new BlockPos(player.getX()-3, player.getY(), player.getZ()), player.level);
-        dex.setAnimationPath("animations/model.animation.json");
-        dex.setModel("gameengine:geo/model.geo.json");
-        dex.setTexture("textures/entity/dexstor.png");
-        dex.setAnim("animation.model.hlop");
+        CharacterBuilder dex = new CharacterBuilder("textures/entity/mrdexstor.png", new BlockPos(player.getX(), player.getY()+5, player.getZ()), player.level);
+        dex.setAnimationPath("animations/character.animation.json");
+        dex.setModel("geo/model.geo.json");
+        dex.setTexture("textures/entity/mrdexstor.png");
+        dex.setAnim("story.npc.ziga");
     }
 }
