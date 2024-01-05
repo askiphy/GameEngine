@@ -30,12 +30,10 @@ public class Script {
    /*   npc.renderItem(new ItemStack(Items.DIAMOND));
         npc.moveEntity(new BlockPos(10, 10, 10), 1);*/
         player.sendMessage(new StringTextComponent("Текст для чата"), player.getUUID());
-        /* Здесь должна быть задержка 15 сек */
-        player.sendMessage(new StringTextComponent("Текст для чата"), player.getUUID());
-        CharacterBuilder dex = new CharacterBuilder("textures/entity/dexstor.png", new BlockPos(player.getX()-3, player.getY(), player.getZ()), player.level);
+        CharacterBuilder dex = new CharacterBuilder("textures/entity/npc.png", new BlockPos(player.getX()-3, player.getY(), player.getZ()), player.level);
         dex.setAnimationPath("animations/model.animation.json");
-        dex.setModel("geo/model.geo.json");
+        dex.setModel("gameengine:geo/model.geo.json");
         dex.setTexture("textures/entity/dexstor.png");
-        dex.setAnim("story.npc.happy");
+        dex.setAnim("animation.model.hlop");
     }
 }
