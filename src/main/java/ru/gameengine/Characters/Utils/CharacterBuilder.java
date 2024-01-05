@@ -48,12 +48,12 @@ public class CharacterBuilder {
     
     public void say(String msg) {
         TextComponent textComponent = new StringTextComponent("["+chatname+"] "+msg);
-        player.sendMessage(textComponent, player.getUUID());
+        player.sendMessage(textComponent, connectedPlayer.getUUID());
     }
     
     public void sayFrom(String msg, PlayerEntity player) {
         TextComponent textComponent = new StringTextComponent("["+chatname+"] "+msg);
-        player.sendMessage(textComponent, connectedPlayer.getUUID());
+        player.sendMessage(textComponent, player.getUUID());
     }
     
     public void setAnim(String show){
