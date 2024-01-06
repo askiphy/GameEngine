@@ -46,10 +46,6 @@ public class CharacterBuilder {
         chatname = name;
     }
     
-    public void say(String msg, PlayerEntity connectedPlayer) {
-        TextComponent textComponent = new StringTextComponent("["+chatname+"] "+msg);
-        player.sendMessage(textComponent, connectedPlayer.getUUID());
-    }
     
     public void sayFrom(String msg, PlayerEntity player) {
         TextComponent textComponent = new StringTextComponent("["+chatname+"] "+msg);
