@@ -14,7 +14,6 @@ import ru.gameengine.Characters.Utils.CharacterBuilder;
 import ru.gameengine.Dialogue.Bench;
 import ru.gameengine.Dialogue.Dialog;
 import ru.gameengine.Utils.Cutscene;
-import ru.gameengine.Utils.BlackScreenOverlay;
 import java.io.Serializable;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -35,9 +34,5 @@ public class Script {
         dex.setModel("geo/model.geo.json");
         dex.setTexture("textures/entity/mrdexstor.png");
         dex.setAnim("story.npc.ziga");
-        Minecraft mc = Minecraft.getMinecraft();
-        BlackScreenOverlay blackScreen = new BlackScreenOverlay(mc, 5000, "This is a black screen");
-        blackScreen.displayBlackScreen();
-        blackScreen.update();
     }
 }
