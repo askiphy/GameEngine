@@ -24,29 +24,20 @@ import ru.gameengine.Events.EventHandler;
 import ru.gameengine.Items.ItemRegistry;
 import ru.gameengine.Network.Network;
 import ru.gameengine.Scripts.Script;
-
+import ru.gameengine.Scripts.Load;
 import java.util.stream.Collectors;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod("gameengine")
 public class GameEngine {
-
-    // Directly reference a log4j logger.
     public static final String MODID = "gameengine";
     public static final Logger LOGGER = LogManager.getLogger();
-
+    
     public GameEngine() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         Object EventHandler = new EventHandler();
         MinecraftForge.EVENT_BUS.register(EventHandler);
@@ -58,9 +49,7 @@ public class GameEngine {
         MinecraftForge.EVENT_BUS.register(RenderRegistry);
         Object AttributeRegistry = new AttributeRegistry();
         MinecraftForge.EVENT_BUS.register(AttributeRegistry);
-        Object Script = new Script();
-        MinecraftForge.EVENT_BUS.register(Script);
-        Network.register();
+        Load();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
