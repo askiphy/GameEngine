@@ -9,7 +9,9 @@ import ru.gameengine.Characters.Camera.CameraRender;
 import ru.gameengine.Characters.Character.CharacterRender;
 
 import static ru.gameengine.GameEngine.MODID;
-
+/*
+Код ответственный за регистрацию персонажей на стороне клиента(рендер)
+*/
 @Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RenderRegistry {
     @SubscribeEvent

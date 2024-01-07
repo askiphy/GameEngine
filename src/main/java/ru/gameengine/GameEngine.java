@@ -2,7 +2,6 @@ package ru.gameengine;
 
 import io.netty.util.internal.logging.InternalLogger;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,29 +24,19 @@ import ru.gameengine.Events.EventHandler;
 import ru.gameengine.Items.ItemRegistry;
 import ru.gameengine.Network.Network;
 import ru.gameengine.Scripts.Script;
-
 import java.util.stream.Collectors;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod("gameengine")
 public class GameEngine {
-
-    // Directly reference a log4j logger.
     public static final String MODID = "gameengine";
     public static final Logger LOGGER = LogManager.getLogger();
-
+    
     public GameEngine() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         Object EventHandler = new EventHandler();
         MinecraftForge.EVENT_BUS.register(EventHandler);
@@ -59,20 +48,16 @@ public class GameEngine {
         MinecraftForge.EVENT_BUS.register(RenderRegistry);
         Object AttributeRegistry = new AttributeRegistry();
         MinecraftForge.EVENT_BUS.register(AttributeRegistry);
-        Object Script = new Script();
-        MinecraftForge.EVENT_BUS.register(Script);
-        Network.register();
+        Object Sc = new Script();
+        MinecraftForge.EVENT_BUS.register(Sc);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        LOGGER.info("[GameEngine] I pre-init");
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().getGame());
+        LOGGER.info("[GameEngine] Client Init");
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -94,7 +79,7 @@ public class GameEngine {
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("[GameEngine] Server Init");
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD

@@ -8,6 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextComponent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import ru.gameengine.Characters.Character.CharacterEntity;
 import ru.gameengine.Characters.CharacterInit;
@@ -17,7 +20,9 @@ import java.util.Set;
 public class CharacterBuilder {
     public static MobEntity entity;
     public static String name = null;
-
+    public static String chatname = null;
+    public static PlayerEntity connectedPlayer = null;
+    
     public CharacterBuilder(String texture, BlockPos pos, World world){
         entity = new CharacterEntity(CharacterInit.CHARACTER.get(), world);
         entity.setPos(pos.getX(),pos.getY(),pos.getZ());
@@ -32,7 +37,21 @@ public class CharacterBuilder {
             }
         }
     }
-
+    
+    public void connectPlayer(PlayerEntity player) {
+        connectedPlayer = player;
+    }
+    
+    public void chatname(String name) {
+        chatname = name;
+    }
+    
+    
+    public void sayFrom(String msg, PlayerEntity player) {
+        TextComponent textComponent = new StringTextComponent("["+chatname+"] "+msg);
+        player.sendMessage(textComponent, player.getUUID());
+    }
+    
     public void setAnim(String show){
         CharacterEntity npc = (CharacterEntity) entity;
         npc.setAnimation(show);
