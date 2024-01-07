@@ -24,7 +24,7 @@ import ru.gameengine.Events.EventHandler;
 import ru.gameengine.Items.ItemRegistry;
 import ru.gameengine.Network.Network;
 import ru.gameengine.Scripts.Script;
-import ru.gameengine.Scripts.Load;
+import ru.gameengine.Scripts.LoaderScripts;
 import java.util.stream.Collectors;
 
 @Mod("gameengine")
@@ -49,7 +49,8 @@ public class GameEngine {
         MinecraftForge.EVENT_BUS.register(RenderRegistry);
         Object AttributeRegistry = new AttributeRegistry();
         MinecraftForge.EVENT_BUS.register(AttributeRegistry);
-        Load();
+        Object Sc = new Script();
+        LoaderScripts.load(Sc);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
